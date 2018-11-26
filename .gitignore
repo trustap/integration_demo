@@ -1,0 +1,3 @@
+# Ignore local configuration files.
+js/trustapi_config.js
+config.php
