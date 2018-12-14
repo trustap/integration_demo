@@ -41,16 +41,16 @@
         </style>
     </head>
     <body>
-        <h1><?php echo $row['name'] ?></h1>
+        <h1><?php echo htmlspecialchars($row['name']); ?></h1>
 
         Description:
         <div>
-            <?php echo $row['descr'] ?>
+            <?php echo htmlspecialchars($row['descr']); ?>
         </div>
 
         Price:
         <div>
-            $<?php echo $row['price'] ?>
+            $<?php echo htmlspecialchars($row['price']) ?>
         </div>
 
         <?php

@@ -15,9 +15,9 @@
     $rows->data_seek(0);
     while ($row = $rows->fetch_assoc()) {
         echo '<li>';
-        echo $row['name'] . '(' . $row['descr'] . '): $' .  $row['price'];
-        echo " <a href='listing.php?id=${row['id']}'>Visit</a>";
-        echo $row['trustap_listing_id'] == NULL ? '' : ' (Trustap Enabled)';
+        echo htmlspecialchars($row['name']) . '(' .  htmlspecialchars($row['descr']) . '): $' .  htmlspecialchars($row['price']);
+        echo " <a href='listing.php?id=" . htmlspecialchars($row['id']) . "'>Visit</a>";
+        echo htmlspecialchars($row['trustap_listing_id'] == NULL ? '' : ' (Trustap Enabled)');
         echo '</li>';
     }
 ?>
