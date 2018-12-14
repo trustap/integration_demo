@@ -2,13 +2,15 @@
     require '../init.php';
 
     if (isset($_GET['submitted'])) {
-        $sql = "
+        $stmt = $mysql_conn->prepare("
             INSERT INTO p2p_listings (name, descr, price, trustap_listing_id)
-            VALUES ('${_GET['name']}', '${_GET['descr']}', ${_GET['price']}, '${_GET['trustap_listing_id']}')
-        ";
-        if (!$mysql_conn->query($sql)) {
-            die("Couldn't insert: " . $mysql_conn->error);
+            VALUES (?, ?, ?, ?);
+        ");
+        $stmt->bind_param('ssii', $_GET['name'], $_GET['descr'], $_GET['price'], $_GET['trustap_listing_id']);
+        if (!$stmt->execute()) {
+            die("Couldn't insert: " . $stmt->error);
         }
+        $stmt->close();
 
         header('Location: index.php');
     }

@@ -1,7 +1,10 @@
 <?php
     require '../init.php';
 
-    $rows = $mysql_conn->query('SELECT * FROM p2p_listings WHERE id = ' . $_GET['id']);
+    $stmt = $mysql_conn->prepare('SELECT * FROM p2p_listings WHERE id = ?;');
+    $stmt->bind_param('i', $_GET['id']);
+    $stmt->execute();
+    $rows = $stmt->get_result();
     $rows->data_seek(0);
     $row = $rows->fetch_assoc();
 ?>
@@ -79,6 +82,8 @@
                     <p>Trustap is not enabled for this transaction</p>
                 <?php
             }
+
+            $stmt->close();
         ?>
     </body>
 </html>
