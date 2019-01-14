@@ -16,7 +16,7 @@
     while ($row = $rows->fetch_assoc()) {
         echo '<li>';
         echo htmlspecialchars($row['name']) . '(' .  htmlspecialchars($row['descr']) . '): $' .  htmlspecialchars($row['price']);
-        echo " <a href='listing.php?id=" . htmlspecialchars(row['id']) . "'>Visit</a>";
+        echo " <a href='listing.php?id=" . htmlspecialchars($row['id']) . "'>Visit</a>";
         echo htmlspecialchars($row['trustap_listing_id'] == NULL ? '' : ' (Trustap Enabled)');
         echo '</li>';
     }
