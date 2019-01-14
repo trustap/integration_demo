@@ -31,6 +31,7 @@
             <label for="descr">Description: </label><input type="text" id="descr" name="descr" value="Green" />
             <br />
             <label for="price">Price: $</label><input type="number" id="price" name="price" value="1000" />
+            <span id="trustap_fee"></span>
             <br />
             Use Trustap: <div id="trustap"></div>
             <br />
@@ -43,6 +44,21 @@
         <script>
             const trustApi = trustap.api(trustApiConf);
             trustApi.basic.singleUseListings.createUseTrustapCheckbox('trustap', 'use_trustap');
+
+            const useTrustap = document.getElementById('use_trustap');
+            const trustapFee = document.getElementById('trustap_fee');
+
+            let pricing;
+            document.getElementById('price').addEventListener('input', function (e) {
+                const price = e.target.valueAsNumber * 100;
+                if (useTrustap.checked && price > 0.50) {
+                    trustApi.basic.getCharge('usd', price).then(function (pricing_) {
+                        pricing = pricing_;
+                        trustapFee.innerHTML = '&plus; $' + (pricing.charge / 100) + ' Trustap fee';
+                    });
+                }
+            });
+
             trustApi.basic.singleUseListings.beforeSubmit('listing', function (form) {
                 const listingId = form.elements['trustap_listing_id'].value;
                 if (!listingId) {
@@ -51,6 +67,10 @@
                 return {
                     'listing_id': listingId,
                     'description': form.elements['name'].value + ': ' + form.elements['descr'].value,
+                    'currency': 'usd',
+                    'price': form.elements['price'].value * 100,
+                    'charge': pricing.charge,
+                    'charge_calculator_version': pricing.charge_calculator_version,
                 };
             });
         </script>
