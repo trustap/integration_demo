@@ -2,13 +2,26 @@
     require '../init.php';
 ?>
 <html>
+    <head>
+        <style>
+#notifs_count {
+    width: 3.0rem;
+    height: 3.0rem;
+    background-color: #efefef;
+}
+        </style>
+    </head>
     <body>
         <h1>Notifications</h1>
+        <div id="notifs_count"></div>
         <div id="notifications">&nbsp;</div>
         <script src="<?php echo $trustapHost; ?>/plugin.js"></script>
         <script src="/js/trustapi_config.js"></script>
         <script>
             const trustApi = trustap.api(trustApiConf);
+
+            trustApi.notifications.setCounterWidget('notifs_count');
+
             trustApi.notifications.listen(function (loggedIn, notifs, err) {
                 if (err) {
                     console.error(err);
