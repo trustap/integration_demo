@@ -25,19 +25,13 @@
         <?php
             if ($row['trustap_listing_id']) {
                 ?>
-                    <a
-                        id="pay-with-trustap"
-                        href="#"
-                        style="background-color: green; color: white;"
-                        >
-                        Safe Payment
-                    </a>
+                    <div id="pay-with-trustap"></div>
                     <script src="<?php echo $trustapHost; ?>/plugin.js"></script>
                     <script src="/js/trustapi_config.js"></script>
                     <script>
                         const trustApi = trustap.api(trustApiConf);
-                        trustApi.basic.singleUseListings.setSafePaymentButton({
-                            btnId: 'pay-with-trustap',
+                        trustApi.basic.singleUseListings.setSafePaymentWidget({
+                            containerId: 'pay-with-trustap',
                             listingId: <?php echo $row['trustap_listing_id']; ?>,
                             onJoinTransaction: function () {
                                 window.top.location.href = 'trustap.php';

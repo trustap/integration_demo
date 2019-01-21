@@ -32,7 +32,7 @@
             <br />
             <label for="price">Price: $</label><input type="number" id="price" name="price" value="1000" />
             <br />
-            Use Trustap: <div id="trustap"></div>
+            <div id="trustap"></div>
             <br />
             <input type="hidden" name="submitted" value="true" />
             <input type="submit" value="Submit" />
@@ -42,7 +42,7 @@
         <script src="/js/trustapi_config.js"></script>
         <script>
             const trustApi = trustap.api(trustApiConf);
-            trustApi.p2p.singleUseListings.createUseTrustapCheckbox('trustap', 'use_trustap');
+            trustApi.p2p.singleUseListings.setUseTrustapWidget({containerId: 'trustap'});
             trustApi.p2p.singleUseListings.beforeSubmit('listing', function (form) {
                 const listingId = form.elements['trustap_listing_id'].value;
                 if (!listingId) {

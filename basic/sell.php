@@ -33,7 +33,7 @@
             <label for="price">Price: $</label><input type="number" id="price" name="price" value="1000" />
             <span id="trustap_fee"></span>
             <br />
-            Use Trustap: <div id="trustap"></div>
+            <div id="trustap"></div>
             <br />
             <input type="hidden" name="submitted" value="true" />
             <input type="submit" value="Submit" />
@@ -43,21 +43,28 @@
         <script src="/js/trustapi_config.js"></script>
         <script>
             const trustApi = trustap.api(trustApiConf);
-            trustApi.basic.singleUseListings.createUseTrustapCheckbox('trustap', 'use_trustap');
+            const useTrustapWidget =
+                trustApi.basic.singleUseListings.setUseTrustapWidget({containerId: 'trustap'});
 
-            const useTrustap = document.getElementById('use_trustap');
             const trustapFee = document.getElementById('trustap_fee');
 
             let pricing;
-            document.getElementById('price').addEventListener('input', function (e) {
-                const price = e.target.valueAsNumber * 100;
-                if (useTrustap.checked && price > 0.50) {
+            let renderTrustapFee = function (trustapEnabled) {
+                const price = document.getElementById('price').valueAsNumber * 100;
+                if (trustapEnabled && price > 0.50) {
                     trustApi.basic.getCharge('usd', price).then(function (pricing_) {
                         pricing = pricing_;
                         trustapFee.innerHTML = '&plus; $' + (pricing.charge / 100) + ' Trustap fee';
                     });
+                } else {
+                    trustapFee.innerHTML = '';
                 }
+            };
+
+            document.getElementById('price').addEventListener('input', function (e) {
+                renderTrustapFee(useTrustapWidget.enabled());
             });
+            useTrustapWidget.onChange(renderTrustapFee);
 
             trustApi.basic.singleUseListings.beforeSubmit('listing', function (form) {
                 const listingId = form.elements['trustap_listing_id'].value;
