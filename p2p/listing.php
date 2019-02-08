@@ -23,7 +23,12 @@
         </div>
 
         <?php
-            if ($row['trustap_listing_id']) {
+            if ($row['trustap_listing_id'] == NULL) {
+                // TODO Add functionality to enable Trustap for a transaction.
+                ?>
+                    <p>Trustap is not enabled for this transaction</p>
+                <?php
+            } else {
                 ?>
                     <div id="pay-with-trustap"></div>
                     <script src="<?php echo $trustapHost; ?>/plugin.js"></script>
@@ -38,11 +43,6 @@
                             },
                         });
                     </script>
-                <?php
-            } else {
-                // TODO Add functionality to enable Trustap for a transaction.
-                ?>
-                    <p>Trustap is not enabled for this transaction</p>
                 <?php
             }
 

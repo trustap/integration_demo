@@ -2,11 +2,15 @@
     require '../init.php';
 
     if (isset($_GET['submitted'])) {
+        $trustap_listing_id = NULL;
+        if ($_GET['trustap_listing_id'] != '') {
+            $trustap_listing_id = $_GET['trustap_listing_id'];
+        }
         $stmt = $mysql_conn->prepare("
             INSERT INTO p2p_listings (name, descr, price, trustap_listing_id)
             VALUES (?, ?, ?, ?);
         ");
-        $stmt->bind_param('ssii', $_GET['name'], $_GET['descr'], $_GET['price'], $_GET['trustap_listing_id']);
+        $stmt->bind_param('ssii', $_GET['name'], $_GET['descr'], $_GET['price'], $trustap_listing_id);
         if (!$stmt->execute()) {
             die("Couldn't insert: " . $stmt->error);
         }
