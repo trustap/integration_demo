@@ -72,6 +72,15 @@ object should define the following fields:
 
 <table>
     <tr>
+        <td><code>production</code></td>
+        <td>
+            Using `false` for this value sets up the plugin for testing use.
+            Trustap user accounts created and used in this mode are kept
+            separate from production users, and payments can be made using test
+            cards.
+        </td>
+    </tr>
+    <tr>
         <td><code>clientId</code></td>
         <td>
             This value is provided by Trustap and is used to associate
