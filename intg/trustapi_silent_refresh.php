@@ -6,7 +6,7 @@
     <head>
     </head>
     <body>
-        <script src="<?php echo $trustapHost; ?>/plugin.js"></script>
+        <script src="<?php echo $trustapLib; ?>"></script>
         <script>
             trustap.silentRefresh();
         </script>

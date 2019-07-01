@@ -18,7 +18,7 @@ body {
     <body>
         <div id="txs"></div>
 
-        <script src="<?php echo $trustapHost; ?>/plugin.js"></script>
+        <script src="<?php echo $trustapLib; ?>"></script>
         <script src="/js/trustapi_config.js"></script>
         <script>
             const trustApi = trustap.api(trustApiConf);

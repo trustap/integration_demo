@@ -15,7 +15,7 @@
         <h1>Notifications</h1>
         <div id="notifs_count"></div>
         <div id="notifications">&nbsp;</div>
-        <script src="<?php echo $trustapHost; ?>/plugin.js"></script>
+        <script src="<?php echo $trustapLib; ?>"></script>
         <script src="/js/trustapi_config.js"></script>
         <script>
             const trustApi = trustap.api(trustApiConf);
