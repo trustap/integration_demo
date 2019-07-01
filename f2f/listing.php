@@ -1,7 +1,7 @@
 <?php
     require '../init.php';
 
-    $stmt = $mysql_conn->prepare('SELECT * FROM basic_listings WHERE id = ?;');
+    $stmt = $mysql_conn->prepare('SELECT * FROM f2f_listings WHERE id = ?;');
     $stmt->bind_param('i', $_GET['id']);
     $stmt->execute();
     $rows = $stmt->get_result();
@@ -19,7 +19,7 @@
 
         Price:
         <div>
-            $<?php echo htmlspecialchars($row['price']); ?>
+            $<?php echo htmlspecialchars($row['price']) ?>
         </div>
 
         <?php
@@ -35,7 +35,7 @@
                     <script src="/js/trustapi_config.js"></script>
                     <script>
                         const trustApi = trustap.api(trustApiConf);
-                        trustApi.basic.singleUseListings.setSafePaymentWidget({
+                        trustApi.p2p.singleUseListings.setSafePaymentWidget({
                             containerId: 'pay-with-trustap',
                             listingId: <?php echo $row['trustap_listing_id']; ?>,
                             onJoinTransaction: function () {

@@ -1,7 +1,7 @@
 <?php
 require 'init.php';
 
-foreach (array("basic", "p2p") as $flow) {
+foreach (array("online", "f2f") as $flow) {
     $ok = $mysql_conn->query("DROP TABLE IF EXISTS ${flow}_listings;"); 
     if (!$ok) {
         die("couldn't drop table: " . $mysql_conn->error);

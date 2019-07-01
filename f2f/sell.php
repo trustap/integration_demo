@@ -7,7 +7,7 @@
             $trustap_listing_id = $_GET['trustap_listing_id'];
         }
         $stmt = $mysql_conn->prepare("
-            INSERT INTO p2p_listings (name, descr, price, trustap_listing_id)
+            INSERT INTO f2f_listings (name, descr, price, trustap_listing_id)
             VALUES (?, ?, ?, ?);
         ");
         $stmt->bind_param('ssii', $_GET['name'], $_GET['descr'], $_GET['price'], $trustap_listing_id);

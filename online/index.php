@@ -11,7 +11,7 @@
         <h2>Listings</h2>
         <ul>
 <?php
-    $rows = $mysql_conn->query('SELECT * FROM p2p_listings');
+    $rows = $mysql_conn->query('SELECT * FROM online_listings');
     $rows->data_seek(0);
     while ($row = $rows->fetch_assoc()) {
         echo '<li>';
