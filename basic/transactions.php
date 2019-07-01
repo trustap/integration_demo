@@ -16,6 +16,7 @@ body {
         </style>
     </head>
     <body>
+        <?php showHeader() ?>
         <div id="txs"></div>
 
         <script src="<?php echo $trustapHost; ?>/plugin.js"></script>

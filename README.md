@@ -194,7 +194,7 @@ created above:
             containerId: 'pay-with-trustap',
             listingId: '<?php echo $trustap_listing_id; ?>',
             onJoinTransaction: function () {
-                window.top.location.href = 'trustap.php';
+                window.top.location.href = 'transactions.php';
             },
         });
     </script>

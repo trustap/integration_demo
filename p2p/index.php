@@ -6,7 +6,7 @@
         <h1>Home</h1>
         <ul>
             <li><a href="sell.php">Sell</a></li>
-            <li><a href="trustap.php">Transactions</a></li>
+            <li><a href="transactions.php">Transactions</a></li>
         </ul>
         <h2>Listings</h2>
         <ul>
