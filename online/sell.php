@@ -10,7 +10,7 @@
             INSERT INTO online_listings (name, descr, price, trustap_listing_id)
             VALUES (?, ?, ?, ?);
         ");
-        $stmt->bind_param('ssii', $_GET['name'], $_GET['descr'], $_GET['price'], $trustap_listing_id);
+        $stmt->bind_param('ssis', $_GET['name'], $_GET['descr'], $_GET['price'], $trustap_listing_id);
         if (!$stmt->execute()) {
             die("Couldn't insert: " . $stmt->error);
         }
