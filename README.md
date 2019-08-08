@@ -10,6 +10,19 @@ websites, using buy-and-sell websites as an example.
 See the [live demo](https://demo.trustap.com) for a sample application that
 uses this integration.
 
+Running
+-------
+
+Create `config.php` from `config.sample.php`. Then copy
+`js/trustapi_config.sample.js` to `js/trustapi_config.js` and populate the
+`clientId` value with your Trustap client ID.
+
+Run `docker-compose up` to run the demo, which will be exposed at
+`http://localhost:8080`. Visit the [MySQL seed
+script](http://localhost:8080/reseed_mysql.php) to initialise the database
+defined in `config.php`. You should now be able to browse [the
+demo](http://localhost:8080).
+
 Flow
 ----
 
@@ -29,20 +42,6 @@ The `listing.php` page gives details for a particular listing. Any element can
 be used as a "Safe Payment Button" using `setSafePaymentButton` (see example
 code in `listing.php`. This will bring up a modal that can create a new Trustap
 transaction between a second user and the user that created the initial listing.
-
-Running
--------
-
-Create `config.php` from `config.sample.php` and populate the database
-connection values. Then copy `js/trustapi_config.sample.js` to
-`js/trustapi_config.js` and populate the `clientId` value with your Trustap
-client ID.
-
-Run `bash scripts/docker_build.sh` to build the Docker image for this project,
-and then run `bash scripts/serve_dev.sh` to run the image. Visit the
-[MySQL seed script](http://localhost:8080/reseed_mysql.php) to initialise the
-database defined in `config.php`. You should now be able to browse [the
-demo](http://localhost:8080).
 
 Guide
 -----
