@@ -13,7 +13,8 @@ uses this integration.
 Running
 -------
 
-Create `config.php` from `config.sample.php`. Then copy
+Create `config.php` from `config.sample.php` and populate the `$client_id` and
+`$client_secret` values with your Trustap client ID and secret. Then copy
 `js/trustapi_config.sample.js` to `js/trustapi_config.js` and populate the
 `clientId` value with your Trustap client ID.
 

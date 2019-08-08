@@ -57,9 +57,10 @@
                     notifs.forEach((notif) => {
                         const li = document.createElement('li');
                         const target = notif.target.split('/');
+                        const route = target[0] === 'basic' ? 'online' : 'f2f_widget';
                         li.innerHTML =
                             notif.description +
-                            ' <a href="/'+target[0]+'/trustap.php?transaction_id='+target[1]+'">Open</a> ';
+                            ' <a href="/'+route+'/transactions.php?transaction_id='+target[1]+'">Open</a> ';
                         const clear = document.createElement('a');
                         clear.href = '#';
                         clear.innerHTML = 'Mark as Read';

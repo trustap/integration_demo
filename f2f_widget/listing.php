@@ -37,7 +37,7 @@
                         const trustApi = trustap.api(trustApiConf);
                         trustApi.p2p.singleUseListings.setSafePaymentWidget({
                             containerId: 'pay-with-trustap',
-                            listingId: <?php echo $row['trustap_listing_id']; ?>,
+                            listingId: '<?php echo $row['trustap_listing_id']; ?>',
                             onJoinTransaction: function () {
                                 window.top.location.href = 'transactions.php';
                             },
