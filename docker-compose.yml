@@ -8,7 +8,7 @@ services:
           # We must mount to `/var/www/html/public` on both the `web` container
           # and the `php` container, because Nginx will return a 404 error if
           # the file isn't found in its own filesystem.
-          - .:/var/www/html/public
+          - ./src:/var/www/html/public
         ports:
           - 8080:80
         depends_on:
@@ -20,7 +20,7 @@ services:
             context: .
             dockerfile: Dockerfile
         volumes:
-          - .:/var/www/html/public
+          - ./src:/var/www/html/public
         depends_on:
           - mysql
 

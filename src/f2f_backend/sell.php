@@ -43,13 +43,14 @@
             'p2p/single_use_listings/' . $lsId . '/set_description',
             array('description' => $params['name'] . ': ' . $params['descr'])
         );
-        if ($resp['status'] != 200) {
-            die("Couldn't update Trustap listing (status ${resp['status']}): " .  json_encode($resp['body']));
-        }
 
         // We don't handle refreshing of tokens in this tutorial so we simply
         // destroy the current token once it has been used.
         unset($_SESSION['auth']);
+
+        if ($resp['status'] != 200) {
+            die("Couldn't update Trustap listing (status ${resp['status']}): " .  json_encode($resp['body']));
+        }
 
         $stmt = $mysql_conn->prepare("
             INSERT INTO f2f_listings (name, descr, price, trustap_listing_id)
