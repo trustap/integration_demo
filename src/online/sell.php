@@ -43,7 +43,7 @@
             <input type="submit" value="Submit" />
         </form>
 
-        <script src="<?php echo $trustapLib; ?>"></script>
+        <script src="<?php echo $trustap_lib; ?>"></script>
         <script src="/js/trustapi_config.js"></script>
         <script>
             const trustApi = trustap.api(trustApiConf);
