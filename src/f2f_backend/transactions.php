@@ -9,19 +9,20 @@ body {
 }
 
 #txs {
-    display: block;
-    border: 0;
+    width: 400px;
+    height: 300px;
     margin: 2rem auto;
 }
         </style>
     </head>
     <body>
-        <iframe
-            width="400"
-            height="500"
-            frameborder="0"
-            id="txs"
-            src="https://app.stage.trustap.com">
-        </iframe>
+        <div id="txs"></div>
+
+        <script src="<?php echo $trustap_lib; ?>"></script>
+        <script src="/js/trustapi_config.js"></script>
+        <script>
+            const trustApi = trustap.api(trustApiConf);
+            trustApi.setTrustapWidget('txs');
+        </script>
     </body>
 </html>
