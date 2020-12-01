@@ -1,6 +1,12 @@
 <?php
     require '../init.php';
 
+    // This is a simple workaround for refreshing tokens. If the local token has
+    // expired then `?refresh=1` can be added to the URL to issue a new one.
+    if (isset($_GET['refresh'])) {
+        unset($_SESSION['auth']);
+    }
+
     if (isset($_POST['submitted']) || isset($_SESSION['login_redirect'])) {
         if (!isset($_SESSION['auth'])) {
             $state = sha1(openssl_random_pseudo_bytes(1024));

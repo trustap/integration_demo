@@ -28,6 +28,7 @@
             );
             die();
         }
+        unset($_SESSION['login_redirect']);
 
         $resp = $trustapi->call(
             'POST',
@@ -49,7 +50,14 @@
 ?>
 <html>
     <body>
-        <h1><?php echo htmlspecialchars($row['name']); ?></h1>
+        <h1>
+            <?php
+                echo htmlspecialchars($row['name']);
+                if ($row['sold']) {
+                    echo ' (Sold)';
+                }
+            ?>
+        </h1>
 
         <p>
             <strong>Description:</strong>
@@ -63,13 +71,16 @@
                 $<?php echo htmlspecialchars($row['price']) ?>
             </span>
         </p>
-
+        <p>
+            <?php echo htmlspecialchars($row['joins']) ?> people
+            applied for this item
+        </p>
         <?php
             if ($row['trustap_listing_id'] == NULL) {
                 ?>
                     <p>Trustap is not enabled for this transaction</p>
                 <?php
-            } else {
+            } else if (!$row['sold']) {
                 ?>
                     <form method="POST">
                         <input type="submit" name="submitted" value="Pay With Trustap" />

@@ -12,7 +12,9 @@ foreach (array("online", "f2f") as $flow) {
             name VARCHAR(255),
             descr VARCHAR(255),
             price INT,
-            trustap_listing_id VARCHAR(255)
+            trustap_listing_id VARCHAR(255),
+            sold BOOLEAN DEFAULT FALSE,
+            joins INT DEFAULT 0
     );");
     if (!$ok) {
         die("couldn't create table: " . $mysql_conn->error);
