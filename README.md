@@ -67,7 +67,7 @@ configuring it before use.
 The Trustap JS plugin takes a single JS configuration object as a parameter. It
 is recommended to store this object in a JS file for easy maintenance. A simple
 version of such a file is included in
-[trustap_config.sample.js](js/trustap_config.sample.js). The configuration
+[trustap_config.sample.js](src/js/trustap_config.sample.js). The configuration
 object should define the following fields:
 
 <table>
@@ -115,7 +115,7 @@ object should define the following fields:
 You must create a "redirect page" on your site. The user is redirected to this
 page when they log in to Trustap on your site. This page should only load the
 Trustap plugin and call the `trustap.signIn()` method - see [the sample
-implementation](intg/trustapi_sign_in.php) for an example.
+implementation](src/intg/trustapi_sign_in.php) for an example.
 
 #### Silent Refresh Page
 
@@ -123,7 +123,7 @@ You must create a "silent refresh page" on your site. This page is invisibly
 opened by the Trustap plugin in order to refresh the user's session while
 they're active on your site. This page should only load the Trustap plugin and
 call the `trustap.silentRefresh()` method - see [the sample
-implementation](intg/trustapi_silent_refresh.php) for an example.
+implementation](src/intg/trustapi_silent_refresh.php) for an example.
 
 ### Page Updates
 
@@ -140,7 +140,7 @@ and generally consists of the following steps:
 3. Update the backend to store the `trustap_listing_id` returned with the
    "Create Listing" form
 
-See [one of the "Create Listing" sample pages](p2p/sell.php) for an example
+See [one of the "Create Listing" sample pages](src/p2p/sell.php) for an example
 setup.
 
 ##### Initialise the Trustap plugin
