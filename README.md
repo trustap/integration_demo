@@ -67,7 +67,7 @@ configuring it before use.
 The Trustap JS plugin takes a single JS configuration object as a parameter. It
 is recommended to store this object in a JS file for easy maintenance. A simple
 version of such a file is included in
-[trustap_config.sample.js](src/js/trustap_config.sample.js). The configuration
+[trustapi_config.sample.js](src/js/trustapi_config.sample.js). The configuration
 object should define the following fields:
 
 <table>
@@ -140,8 +140,8 @@ and generally consists of the following steps:
 3. Update the backend to store the `trustap_listing_id` returned with the
    "Create Listing" form
 
-See [one of the "Create Listing" sample pages](src/p2p/sell.php) for an example
-setup.
+See [one of the "Create Listing" sample pages](src/f2f_widget/sell.php) for an
+example setup.
 
 ##### Initialise the Trustap plugin
 
