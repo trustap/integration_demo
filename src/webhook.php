@@ -57,5 +57,21 @@
         if (!$stmt->execute()) {
             die("Couldn't update status");
         }
+    } if ($event['code'] == 'basic_tx.joined') {
+        $ls_id = get_ls_id($trustapi, $event);
+
+        $stmt = $mysql_conn->prepare('UPDATE online_listings SET joins = joins + 1 WHERE trustap_listing_id = ?;');
+        $stmt->bind_param('s', $ls_id);
+        if (!$stmt->execute()) {
+            die("Couldn't update joins");
+        }
+    } if ($event['code'] == 'basic_tx.paid') {
+        $ls_id = get_ls_id($trustapi, $event);
+
+        $stmt = $mysql_conn->prepare('UPDATE online_listings SET sold = TRUE WHERE trustap_listing_id = ?;');
+        $stmt->bind_param('s', $ls_id);
+        if (!$stmt->execute()) {
+            die("Couldn't update status");
+        }
     }
 ?>

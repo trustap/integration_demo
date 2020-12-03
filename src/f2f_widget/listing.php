@@ -30,8 +30,8 @@
         </div>
 
         <div>
-            <?php echo htmlspecialchars($row['joins']) ?> people
-            applied for this item
+            <?php echo htmlspecialchars($row['joins']) ?> people applied for
+            this item
         </div>
 
         <?php

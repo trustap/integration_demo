@@ -10,7 +10,14 @@
 ?>
 <html>
     <body>
-        <h1><?php echo htmlspecialchars($row['name']); ?></h1>
+        <h1>
+            <?php
+                echo htmlspecialchars($row['name']);
+                if ($row['sold']) {
+                    echo ' (Sold)';
+                }
+            ?>
+        </h1>
 
         Description:
         <div>
@@ -22,13 +29,18 @@
             $<?php echo htmlspecialchars($row['price']); ?>
         </div>
 
+        <div>
+            <?php echo htmlspecialchars($row['joins']) ?> people applied for
+            this item
+        </div>
+
         <?php
             if ($row['trustap_listing_id'] == NULL) {
                 // TODO Add functionality to enable Trustap for a transaction.
                 ?>
                     <p>Trustap is not enabled for this transaction</p>
                 <?php
-            } else {
+            } else if (!$row['sold']) {
                 ?>
                     <div id="pay-with-trustap"></div>
                     <script src="<?php echo $trustap_lib; ?>"></script>
